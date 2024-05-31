@@ -45,7 +45,7 @@ public class CustomerService {
         }
     }
 
-    public List<Customer> parseExcelFile(InputStream is) throws IOException {
+    private List<Customer> parseExcelFile(InputStream is) throws IOException {
         List<Customer> validCustomers = new ArrayList<>();
         List<String> errors = new ArrayList<>();
 
