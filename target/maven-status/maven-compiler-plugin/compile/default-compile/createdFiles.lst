@@ -1,3 +1,4 @@
+com\dailycodework\excel2database\Country.class
 com\dailycodework\excel2database\repository\CustomerRepository.class
 com\dailycodework\excel2database\controller\CustomerController.class
 com\dailycodework\excel2database\Excel2DatabaseApplication.class

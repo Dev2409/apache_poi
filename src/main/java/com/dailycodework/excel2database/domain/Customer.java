@@ -1,5 +1,6 @@
 package com.dailycodework.excel2database.domain;
 
+import com.dailycodework.excel2database.Country;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ public class Customer {
     private Integer customerId;
     private String firstName;
     private String lastName;
-    private String country;
+    private Country country;
     private Integer telephone;
 
 }

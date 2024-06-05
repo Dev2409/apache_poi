@@ -1,5 +1,6 @@
 package com.dailycodework.excel2database.service;
 
+import com.dailycodework.excel2database.Country;
 import com.dailycodework.excel2database.domain.Customer;
 import com.dailycodework.excel2database.domain.ErrorLog;
 import com.dailycodework.excel2database.repository.CustomerRepository;
@@ -79,7 +80,7 @@ public class CustomerService {
                             }
 
                             switch (header) {
-                                case "CustomerID":
+                                case "Customer ID":
                                     if (cell.getCellType() != CellType.NUMERIC) {
                                         rowErrors.add(new ExcelError(i, "Invalid data type for customerId. Expected numeric."));
                                     } else {
@@ -101,10 +102,12 @@ public class CustomerService {
                                     }
                                     break;
                                 case "Country":
-                                    if (cell.getCellType() != CellType.STRING) {
-                                        rowErrors.add(new ExcelError(i, "Invalid data type for country. Expected string."));
-                                    } else {
-                                        customer.setCountry(cell.getStringCellValue());
+                                    String countryValue = cell.getStringCellValue().trim();
+                                    try {
+                                        Country country = Country.fromDisplayName(countryValue);
+                                        customer.setCountry(country);
+                                    } catch (IllegalArgumentException e) {
+                                        rowErrors.add(new ExcelError(i, "Invalid country value: " + countryValue));
                                     }
                                     break;
                                 case "Telephone":
